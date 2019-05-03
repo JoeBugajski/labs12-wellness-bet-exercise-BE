@@ -1,15 +1,15 @@
-// Update with your config settings.
+//Update with your config settings.
 
 
 //EASIEST TO ADD THIS AFTER DEPLOYMENT
-// localPgConnection = {
-//   host: "localhost",
-//   database: "wellness",
-//   user: "team wombat",
-//   password: "pass"
-// };
+localPgConnection = {
+  host: "localhost",
+  database: "wellness",
+  user: "team wombat",
+  password: "pass"
+};
 
-// const prodDbConnection = process.env.DATABASE_URL || localPgConnection;
+const prodDbConnection = process.env.DATABASE_URL || localPgConnection;
 
 module.exports = {
   development: {
@@ -37,16 +37,16 @@ module.exports = {
     seeds: {
       diirectory: "./data/seeds"
     }
+  },
+ // Easiest to add this after deployment
+  production: {
+    client: "pg",
+    connection: prodDbConnection,
+    migrations: {
+      directory: "./data/migrations"
+    },
+    seeds: {
+      directory: "./data/seeds"
+    }
   }
-  // Easiest to add this after deployment
-  // production: {
-  //   client: "pg",
-  //   connection: prodDbConnection,
-  //   migrations: {
-  //     directory: "./data/migrations"
-  //   },
-  //   seeds: {
-  //     directory: "./data/seeds"
-  //   }
-  // }
 };
